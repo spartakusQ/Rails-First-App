@@ -13,6 +13,8 @@ module RailsFirstApp
 
     config.time_zone = 'Moscow'
     config.active_record.default_timezone = :local
+    I18n.enforce_available_locales = false
+    config.i18n.default_locale = :ru
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
