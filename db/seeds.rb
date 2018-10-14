@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+
+test = Test.create(title: 'Ruby', level: 1)
+
+user = User.create( email: 'bob@blob.com', username: 'Bob' )
+
+question = Question.create(body: 'Some one', test_id: 1)
+ 
+category = Category.create(title: 'Front')
+  
+answer = Answer.create(body: 'Some one', correct: true, question_id: 1) 
+
