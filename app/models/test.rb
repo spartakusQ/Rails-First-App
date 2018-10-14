@@ -1,7 +1,9 @@
 class Test < ApplicationRecord
 
-  def self.titles_by_category(title)
-    by_category(title).order(title: :desc).pluck(:title)
+  def self.title_by_category
+    by_category(title).order(title: :desc).map(&:title)
   end
-  
+
 end
+
+
