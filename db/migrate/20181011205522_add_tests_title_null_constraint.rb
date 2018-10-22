@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddTestsTitleNullConstraint < ActiveRecord::Migration[5.2]
   def change
     change_column_null :users, :email, false
@@ -6,7 +8,4 @@ class AddTestsTitleNullConstraint < ActiveRecord::Migration[5.2]
     change_column_null :categories, :title, false
     change_column_null :answers, :body, false
   end
-
-
-  
 end
