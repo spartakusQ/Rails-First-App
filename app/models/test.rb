@@ -3,14 +3,18 @@ class Test < ApplicationRecord
   has_many :passing_tests
   has_many :users, through: :passing_tests
 
-  def self.title_by_category
-    by_category(title).order(title: :desc).map(&:title)
+  def self.title_by_category(category_title)
+    Test.by_category('fgsgasgdasgd')
   end
 
-  def by_level
-
+  def tests_by_level
+    puts '12'
   end
+  
+
+
   
 end
 
 
+# Test.joins('...').where(...).where(level: level)
