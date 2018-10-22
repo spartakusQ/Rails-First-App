@@ -1,20 +1,13 @@
-class Test < ApplicationRecord
+# frozen_string_literal: true
 
+class Test < ApplicationRecord
+  belongs_to :category
   has_many :passing_tests
   has_many :users, through: :passing_tests
 
-  def self.title_by_category(category_title)
-    Test.by_category('fgsgasgdasgd')
+  def self.titles_by_category(title)
+    join(:category).where(categories: { title: title }).order(title: :desc).pluck(:title)
   end
-
-  def tests_by_level
-    puts '12'
-  end
-  
-
-
-  
 end
 
-
-# Test.joins('...').where(...).where(level: level)
+# Client.where(active: true).pluck(:id)
