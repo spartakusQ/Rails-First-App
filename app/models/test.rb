@@ -5,6 +5,9 @@ class Test < ApplicationRecord
   has_many :users, through: :passing_tests
   has_many :questions
   belongs_to :author, class_name: 'User'
+
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :title, presence: true, uniqueness: { scope: :level, message: 'There can be only one Test with the given name and level' }
   
   scope :easy, -> { by_level(0..1) }
   scope :medium, -> { by_level(2..4) }
