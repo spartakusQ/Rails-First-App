@@ -47,12 +47,10 @@ ActiveRecord::Schema.define(version: 2018_10_23_085040) do
     t.integer "level", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "{:foreign_key=>true, :index=>true}_id"
     t.integer "category_id"
     t.integer "author_id"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
-    t.index ["{:foreign_key=>true, :index=>true}_id"], name: "index_tests_on_{:foreign_key=>true, :index=>true}_id"
   end
 
   create_table "users", force: :cascade do |t|
