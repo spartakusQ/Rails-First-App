@@ -1,5 +1,5 @@
 class Answer < ApplicationRecord
-  belongs_to :questions
+  belongs_to :question
   MAX_ANSWERS_COUNT = 4
 
   scope :correct, -> { where(correct: true) }
