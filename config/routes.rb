@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :tests
 
   resources :tests do
-    resources :question
+    resources :question, shallow: true
   end
   
 end
