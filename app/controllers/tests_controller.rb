@@ -1,4 +1,4 @@
-class TestsController < ApplicationController  
+class TestsController < ApplicationController
   before_action :set_test, only: %i[show edit update destroy start]
   before_action :set_user, only: :start
 
@@ -7,14 +7,10 @@ class TestsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    
   end
-  
-
 
   def new
     @test = Test.new
@@ -49,7 +45,6 @@ class TestsController < ApplicationController
     @user.tests.push(@test)
     redirect_to @user.passing_test(@test)
   end
-  
 
   private
 
@@ -60,7 +55,6 @@ class TestsController < ApplicationController
   def set_user
     @user = User.first
   end
-  
 
   def test_params
     params.require(:test).permit(:title, :level, :category_id, :author_id)

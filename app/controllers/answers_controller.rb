@@ -2,16 +2,12 @@ class AnswersController < ApplicationController
   before_action :find_question, only: %i[new create]
   before_action :set_answer, only: %i[show edit update destroy]
 
-  def index
-    @answers = Answer.all
-  end
-
   def show
   end
 
 
   def new
-    @answer = Answer.new
+    @answer = @question.answers.new
   end
 
   def edit
@@ -19,7 +15,7 @@ class AnswersController < ApplicationController
 
 
   def create
-    @answer = Answer.new(answer_params)
+    @answer = @question.answers.new(answer_params)
 
     if @answer.save
       redirect_to @question
@@ -39,7 +35,7 @@ class AnswersController < ApplicationController
 
   def destroy
     @answer.destroy
-      @question = Question.find(params[:question_id])
+      redirect_to @answer.question
   end
 
   private
