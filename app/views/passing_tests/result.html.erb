@@ -1,1 +1,5 @@
-<h1>Test <%= @passing_test.test.title %> was completed!</h1>
+<h1 class="<%= set_result_color(@passing_test) %>">Test
+  '<%= @passing_test.test.title %>'
+   <%= show_result_message(@passing_test)%></h1>
+
+<h2> <%= link_to 'List all tests', tests_path %></h2>
