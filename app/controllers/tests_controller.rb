@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-  before_action :set_test, only: %i[show edit update destroy start]
+  before_action :find_test, only: %i[show edit update destroy start]
 
   def index
     @tests = Test.all
@@ -39,14 +39,14 @@ class TestsController < ApplicationController
   end
 
   def start
-    @user = User.first
+    user = User.first
     @user.tests.push(@test)
     redirect_to @user.passing_test(@test)
   end
 
   private
 
-  def set_test
+  def find_test
     @test = Test.find(params[:id])
   end
 
