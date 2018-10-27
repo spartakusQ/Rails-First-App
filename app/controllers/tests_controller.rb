@@ -40,8 +40,8 @@ class TestsController < ApplicationController
 
   def start
     user = User.first
-    @user.tests.push(@test)
-    redirect_to @user.passing_test(@test)
+    user.tests.push(@test)
+    redirect_to user.passing_test(@test)
   end
 
   private
