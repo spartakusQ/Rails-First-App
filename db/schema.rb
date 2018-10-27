@@ -29,12 +29,13 @@ ActiveRecord::Schema.define(version: 2018_10_26_201851) do
   create_table "passing_tests", force: :cascade do |t|
     t.integer "user_id"
     t.integer "test_id"
-    t.integer "current_question_id"
-    t.integer "correct_answers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "correct_answers_id", default: 0
-    t.index ["correct_answers_id"], name: "index_passing_tests_on_correct_answers_id"
+    t.integer "current_question_id"
+    t.integer "correct_answers", default: 0
+    t.index ["current_question_id"], name: "index_passing_tests_on_current_question_id"
+    t.index ["test_id"], name: "index_passing_tests_on_test_id"
+    t.index ["user_id"], name: "index_passing_tests_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
