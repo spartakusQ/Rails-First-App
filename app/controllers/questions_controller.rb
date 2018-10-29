@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_test, only: %i[create]
   before_action :find_question, only: %i[show destroy]
 
@@ -9,13 +10,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
-    
+
   end
-  
+
 
   def create
     @question = @test.questions.new(question_params)
@@ -34,7 +35,7 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       redirect_to test_path(@question.test)
-    else      
+    else
       render :edit
     end
   end
