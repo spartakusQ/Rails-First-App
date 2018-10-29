@@ -7,4 +7,10 @@ module ApplicationHelper
     "https://github.com/#{author_name}/#{repository_name}"
     link_to "Rails-First-App", "https://github.com/#{author_name}/#{repository_name}", target: :blank
   end
+
+  def flash_messages
+    flash.map do |type, message|
+      content_tag :p, message, class: "flash #{type}"
+    end.join("\n").html_safe
+  end
 end
