@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
 
   helper_method :current_user,
@@ -11,7 +10,8 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless current_user
       cookies[:start_page] = request.url
-      redirect_to login_path
+      redirect_to login_path, alert: 'Are you a Guru? Verify your email and password please'
+    end
   end
 
   def current_user
@@ -21,5 +21,4 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user.present?
   end
-
 end
