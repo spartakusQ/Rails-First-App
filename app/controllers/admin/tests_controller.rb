@@ -40,10 +40,10 @@ class Admin::TestsController < Admin::BaseController
     redirect_to tests_path
   end
 
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.passing_test(@test)
-  end
+  # def start
+  #   current_user.tests.push(@test)
+  #   redirect_to current_user.passing_test(@test)
+  # end
 
   private
 
