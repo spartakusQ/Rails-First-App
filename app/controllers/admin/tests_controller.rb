@@ -20,7 +20,7 @@ class Admin::TestsController < Admin::BaseController
     @test = current_user.tests_author.new(test_params)
 
     if @test.save
-      redirect_to @test
+      redirect_to admin_test_path(@test), notice: t('admin.created', resource: @test.model_name.human)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Admin::TestsController < Admin::BaseController
 
   def update
     if @test.update(test_params)
-      redirect_to @test
+      redirect_to admin_test_path(@test), notice: t('admin.updated', resource: @test.model_name.human)
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::TestsController < Admin::BaseController
 
   def destroy
     @test.destroy
-    redirect_to tests_path
+    redirect_to admin_tests_path, notice: t('admin.deleted', resource: @test.model_name.human)
   end
 
   private
