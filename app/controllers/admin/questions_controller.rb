@@ -1,5 +1,5 @@
 class Admin::QuestionsController < Admin::BaseController
-  
+
   before_action :find_test, only: %i[create]
   before_action :find_question, only: %i[show destroy]
 
@@ -21,7 +21,7 @@ class Admin::QuestionsController < Admin::BaseController
   def create
     @question = @test.questions.new(question_params)
     if @question.save
-      redirect_to admin_test_path(@test)
+      redirect_to admin_test_path(@test), notice: t('admin.created', resource: @question.model_name.human)
     else
       render :new
     end
@@ -29,12 +29,12 @@ class Admin::QuestionsController < Admin::BaseController
 
   def destroy
     @question.destroy
-    redirect_to admin_test_path(@question.test)
+    redirect_to admin_test_path(@question.test), notice: t('admin.deleted', resource: @question.model_name.human)
   end
 
   def update
     if @question.update(question_params)
-      redirect_to admin_test_path(@question.test)
+      redirect_to admin_test_path(@question.test), notice: t('admin.updated', resource: @question.model_name.human)
     else
       render :edit
     end
