@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsFirstApp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>TestGuru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,11 +13,13 @@
   </head>
 
   <body>
-
-
     <%= render 'shared/header' %>
-    <%= render 'shared/flash' %>
-    <%= yield %>
+    
+    <div class="container">
+      <%= flash_messages %>
+      <%= yield %>
+    </div>
+
     <%= render 'shared/footer' %>
   </body>
 </html>
