@@ -8,14 +8,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-test = Test.create(title: 'Ruby', level: 1)
+test = Test.create([{title: 'Ruby', level: 1},
+                   {title: 'Rails', level: 1}])
 
-user = User.create(email: 'bob@blob.com', username: 'Bob')
+user = User.create([{email: 'blob@blob.com', username: 'Blob'},
+                {email: 'adminBob@blob.com', username: 'Bob'}])
 
-question = Question.create(body: 'Some one', test_id: test.id)
+question = Question.create([{body: 'How many years Ruby', test_id: test[0]},
+                            {body: 'How many years Rails', test_id: test[1]}])
 
-category = Category.create(title: 'Front')
+category = Category.create([{title: 'Front-end'},
+                            {title: 'Back-end'}])
 
-answer = Answer.create(body: 'Some one', correct: true, question_id: question.id)
+answer = Answer.create([{ body: '25', question_id: question[0].id, correct: true },
+                       { body: '42', question_id: question[0].id, correct: false }])
 
 passing_tests = PassingTest.create(user_id: user.id, test_id: test.id, current_question_id: nil, correct_answers: nil)
