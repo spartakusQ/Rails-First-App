@@ -93,7 +93,7 @@ en:
       index:
         header: "Users Gists"
         question: "Question"
-        url: "Hash"
+        gist_hash_url: "Gist Hash Url"
         user: "User email"
       gist:
         url: "Gist url"

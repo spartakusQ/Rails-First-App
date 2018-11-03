@@ -93,7 +93,7 @@ ru:
       index:
         header: "Gists пользователей"
         question: "Вопрос"
-        url: "Hash"
+        gist_hash_url: "Ссылка на все Gist"
         user: "Пользователь"
       gist:
         url: "Gist-Ссылка"
