@@ -1,7 +1,7 @@
 class Admin::QuestionsController < Admin::BaseController
 
-  before_action :find_test, only: %i[create]
-  before_action :find_question, only: %i[show destroy]
+  before_action :find_test, only: %i[create new]
+  before_action :find_question, only: %i[show destroy edit update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
