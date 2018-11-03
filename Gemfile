@@ -41,6 +41,7 @@ gem 'devise', '~> 4.2'
 #KEY
 
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'octokit', '~> 4.13'
 
 #NETWORKING
 
