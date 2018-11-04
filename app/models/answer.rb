@@ -5,7 +5,7 @@ class Answer < ApplicationRecord
   scope :correct, -> { where(correct: true) }
 
   validates :body, presence: true
-  
+
   validate :validate_max_answers_count, on: :create
 
   def validate_max_answers_count

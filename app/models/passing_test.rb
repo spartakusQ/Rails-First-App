@@ -7,7 +7,7 @@ class PassingTest < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_current_question %i[create update]
+  before_validation :before_validation_set_current_question, on: %i[create update]
 
   def accept!(answer_ids)
     self.correct_answers += 1 if correct_answer?(answer_ids)
