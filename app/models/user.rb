@@ -20,7 +20,7 @@ class User < ApplicationRecord
   end
 
   def passing_test(test)
-    passing_test.order(id: :desc).find_by(test_id: test.id)
+    passing_tests.order(id: :desc).find_by(test_id: test.id)
   end
 
   def admin?
