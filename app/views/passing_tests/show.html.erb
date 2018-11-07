@@ -2,7 +2,16 @@
   <div class="col col-md-6">
     <h1><%= t('.header', test_title: @passing_test.test.title) %></h1>
 
-    <h3><%= t('.questions', current_question: @passing_test.current_question_number, questions_count: @passing_test.test.questions.count) %></h3>
+    <%= render 'progress_bar' %>
+
+    <div class="row">
+      <dt class="col-sm-9">
+        <%= t('.questions', current_question: @passing_test.current_question_number, questions_count: @passing_test.test.questions.count) %>
+      </dt>
+      <dd class="col-sm-3">
+        <%= link_to 'Gist question', gist_passing_test_path(@passing_test), method: :post %>
+      </dd>
+    </div>
 
     <div class="card">
       <div class="card-header">
@@ -19,7 +28,6 @@
          <% end %>
 
         </ul>
-        <%= link_to 'Gist question', gist_passing_test_path(@passing_test), method: :post %>
         <%= form.submit t('.next'), class: "btn btn-primary" %>
       <% end %>
     </div>

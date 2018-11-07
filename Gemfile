@@ -56,6 +56,9 @@ gem "bootstrap_form", ">= 4.0.0.alpha1"
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'octicons_helper', '~> 8.1'
 
+# rails-html-sanitizer dependencies
+gem "loofah", ">= 2.2.3"
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

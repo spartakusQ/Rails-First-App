@@ -1,10 +1,10 @@
 class TestsMailer < ApplicationMailer
 
-  def comleted_test(passing_tests)
-    @user = passing_tests.user
-    @test = passing_tests.test
+  def completed_test(passing_test)
+    @user = passing_test.user
+    @test = passing_test.test
 
-    mail to: @user.email
+    mail to: @user.email, subject: 'You just completed the TestGuru test!'
   end
 
 end
