@@ -96,7 +96,7 @@ en:
         header: "Users Gists"
         question: "Question"
         gist_hash_url: "Gist Hash Url"
-        user: "User email"
+        user: "User E-mail"
       gist:
         url: "Gist url"
 
@@ -116,6 +116,14 @@ en:
 
   gist_description: "%{test_title} questions from TestGuru"
 
+  feedbacks:
+    new:
+      header: "Feedback form"
+      back: "Back"
+    create:
+      success: "E-mail successfully sent"
+      failed: "Error sending E-mail"
+
   helpers:
     submit:
       test:
@@ -127,6 +135,8 @@ en:
       answer:
         create: "Add answer"
         update: "Update answer"
+      feedback:
+        create: "Send"
     label:
       test:
         title: "Title"
@@ -137,6 +147,9 @@ en:
       answer:
         body: "Body"
         correct: "Correct"
+      feedback:
+        title: "Subject"
+        body: "Message"
     select:
       prompt: "Select"
 
