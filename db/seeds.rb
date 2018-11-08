@@ -15,3 +15,6 @@ User.create([{email: "blob#{i}@blob.com", username: "Blob#{i}"},
              {email: "adminBob#{i}@blob.com", username: "Bob#{i}"}])
 
 end
+
+Category.create([{title: 'Front-end'},
+                            {title: 'Back-end'}])
