@@ -59,6 +59,9 @@ gem 'octicons_helper', '~> 8.1'
 # rails-html-sanitizer dependencies
 gem "loofah", ">= 2.2.3"
 
+#
+gem 'concurrent-ruby', '~> 1.1', '>= 1.1.3'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
