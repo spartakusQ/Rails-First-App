@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_103522) do
+ActiveRecord::Schema.define(version: 2018_11_08_123056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,19 @@ ActiveRecord::Schema.define(version: 2018_11_03_103522) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id"
+    t.bigint "question_id"
     t.string "url"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_gists_on_question_id"
@@ -41,13 +50,12 @@ ActiveRecord::Schema.define(version: 2018_11_03_103522) do
   end
 
   create_table "passing_tests", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "test_id"
+    t.bigint "user_id"
+    t.bigint "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "current_question_id"
     t.integer "correct_answers", default: 0
-    t.index ["current_question_id"], name: "index_passing_tests_on_current_question_id"
     t.index ["test_id"], name: "index_passing_tests_on_test_id"
     t.index ["user_id"], name: "index_passing_tests_on_user_id"
   end
@@ -64,9 +72,8 @@ ActiveRecord::Schema.define(version: 2018_11_03_103522) do
     t.integer "level", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.integer "author_id"
-    t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
   end
@@ -98,4 +105,10 @@ ActiveRecord::Schema.define(version: 2018_11_03_103522) do
     t.index ["type"], name: "index_users_on_type"
   end
 
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "gists", "questions"
+  add_foreign_key "gists", "users"
+  add_foreign_key "passing_tests", "tests"
+  add_foreign_key "passing_tests", "users"
+  add_foreign_key "tests", "categories"
 end

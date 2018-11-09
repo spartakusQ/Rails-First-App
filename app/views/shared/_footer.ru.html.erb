@@ -4,4 +4,9 @@
       <%= github_link("spartakusQ", "Rails-First-App") %> Учебная платформа для тестирования.<br>
       <%= link_to "Учебный проект в онлайн-школе Thinknetica", "https://thinknetica.com", target: :blank %>
   </span>
+      <% if current_user %>
+  <div class="float-right">
+      <%= link_to 'Обратная связь', new_feedback_path, class: 'btn btn-outline-info' %>
+  </div>
+      <% end %>
 </nav>
