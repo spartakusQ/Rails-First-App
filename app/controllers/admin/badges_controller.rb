@@ -1,8 +1,11 @@
 class Admin::BadgesController < Admin::BaseController
+  before_action :authenticate_user!
+  before_action :find_badges, only: :index
   before_action :find_badge, only: %i[destroy edit update show]
 
   def index
     @badges = Badge.all
+    @user_bages = UserBadge.all
   end
 
   def new
@@ -16,32 +19,36 @@ class Admin::BadgesController < Admin::BaseController
     @badge = Badge.new(badge_params)
 
     if @badge.save
-      redirect_to  [:admin, @badge]
+      redirect_to admin_badges_path, notice: t('admin.created', resource: @badge.model_name.human)
     else
-      render :new
+      render [:admin, :new]
     end
   end
 
   def update
     if @badge.update(badge_params)
-      redirect_to  [:admin, @badge]
+      redirect_to admin_badges_path, notice: t('admin.updated', resource: @badge.model_name.human)
     else
-      render :edit
+      render [:admin, :edit]
     end
   end
 
   def destroy
     @badge.destroy
-    redirect_to admin_badges_path
+    redirect_to admin_badges_path, notice: t('admin.deleted', resource: @badge.model_name.human)
   end
 
   private
 
   def badge_params
-    params.require(:badge).permit(:title, :image_url, :rule, :parameter)
+    params.require(:badge).permit(:name, :image, :rule)
   end
 
   def find_badge
     @badge = Badge.find(params[:id])
+  end
+
+  def find_badges
+    @badges = Badge.all
   end
 end
