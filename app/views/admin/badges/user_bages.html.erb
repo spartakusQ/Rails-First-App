@@ -1,0 +1,23 @@
+<h1>Users Bages</h1>
+<table>
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Image</th>
+    <th>Rule</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @user_bages.each do |user_badge| %>
+    <tr>
+      <td><%= user_badge.user.email %></td>
+      <td><%= user_badge.badge.image %></td>
+      <td><%= user_badge.badge.rule %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', admin_badges_path %>

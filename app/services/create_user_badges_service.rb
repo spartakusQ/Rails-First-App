@@ -1,12 +1,14 @@
 class CreateUserBadgesService
+  attr_reader :badges
 
   def initialize(passing_tests)
     @user = passing_tests.user
     @test = passing_tests.test
     @passing_tests = passing_tests
+    @badges = []
   end
 
-  def call
+  def badges_award!
     Badge.all.find_each do |badge|
       create_badge(badge.name) if send("passed_#{badge.name}?", badge.rule)
     end
@@ -19,7 +21,7 @@ class CreateUserBadgesService
     success_tests.map(&:test_id).uniq.count == category.tests.count
   end
 
-  def passed_success_on_first_try?(stub_param)
+  def passed_success_on_first_try?(_value)
     PassingTest.where(user: @user, test: @test).count == 1 if @passing_test.success?
   end
 
@@ -38,23 +40,20 @@ class CreateUserBadgesService
   end
 
 
-  def create_badge_params
-    #code
-  end
-
-  def create_badge_cup(name)
-    @user.badges.create(name: name, image: 'badge_cup.png', rule: name)
-  end
-
-  def create_badge_first(name)
-    @user.badges.create(name: name, image: 'badge_first.png', rule: name)
-  end
-
-  def create_badge_ok(name)
-    @user.badges.create(name: name, image: 'badge_ok.png', rule: name)
-  end
-
-
-
+  # def create_badge_params
+  #   #code
+  # end
+  #
+  # def create_badge_cup(name)
+  #   @user.badges.create(name: name, image: 'badge_cup.png', rule: name)
+  # end
+  #
+  # def create_badge_first(name)
+  #   @user.badges.create(name: name, image: 'badge_first.png', rule: name)
+  # end
+  #
+  # def create_badge_ok(name)
+  #   @user.badges.create(name: name, image: 'badge_ok.png', rule: name)
+  # end
 
 end

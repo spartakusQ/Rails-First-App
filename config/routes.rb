@@ -22,8 +22,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :badges
-    get 'user_badges', to: 'badges#user_badges'
+    resources :badges    
     resources :tests do
       patch :update_inline, on: :member
       resources :questions, shallow: true, except: :index do
