@@ -18,9 +18,9 @@
   <span class="navbar-text">
     <% if user_signed_in? %>
       <% if current_user.admin? %>
-        <%= link_to 'badge', admin_badges_path %>
+        <%= link_to 'Badge', admin_badges_path, class: 'btn btn-outline-info'  %>
       <% else %>
-        <%= link_to 'badge', badges_path %>
+        <%= link_to 'Badge', badges_path, class: 'btn btn-outline-info'  %>
       <% end %>
       <%= t('.hello')%>,
       <b><%= current_user.email %></b>
