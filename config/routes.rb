@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'tests#index'
 
+  resources :feedbacks, only: %i[new create]
+  resources :badges, only: :index
+
   devise_for :users, controllers: { sessions: 'users/sessions' },
              path: :gurus, path_names: { sign_in: :login, sign_out: :logout }
 
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :badges
+    get 'user_badges', to: 'badges#user_badges'
     resources :tests do
       patch :update_inline, on: :member
       resources :questions, shallow: true, except: :index do
@@ -27,7 +32,4 @@ Rails.application.routes.draw do
     end
     resources :gists, only: :index
   end
-
-  resources :feedbacks, only: %i[new create]
-  resources :badges, only: :index
 end
