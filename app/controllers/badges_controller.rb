@@ -3,7 +3,7 @@ class BadgesController < ApplicationController
   before_action :find_badge, only: [:show]
 
   def index
-    # @badges = current_user.badges.all
+    @badges = current_user.badges.all
     # @user_badges = current_user.badges
     # @accessible_badges = Badge.all
   end
