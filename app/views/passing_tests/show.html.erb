@@ -3,6 +3,7 @@
     <h1><%= t('.header', test_title: @passing_test.test.title) %></h1>
 
     <%= render 'progress_bar' %>
+    <%= render 'timer', passing_test: @passing_test %>
 
     <div class="row">
       <dt class="col-sm-9">

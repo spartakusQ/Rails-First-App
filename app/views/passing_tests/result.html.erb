@@ -1,5 +1,6 @@
 <div class="row justify-content-center mt-3">
   <div class="col col-md-6">
+    <%= t('.header', test_title: @passing_test.test.title ) %>
     <%= render 'progress_bar' %>
     <h1 class="<%= result_color(@passing_test) %>">
       <%= t('.header', title: @passing_test.test.title) %>
