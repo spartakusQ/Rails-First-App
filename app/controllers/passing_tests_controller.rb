@@ -14,7 +14,7 @@ class PassingTestsController < ApplicationController
   def update
     @passing_test.accept!(params[:answer_ids])
     if @passing_test.completed?
-      badges_award! if @passing_test.successfully_completed?
+      award_badges! if @passing_test.successfully_completed?
       TestsMailer.completed_test(@passing_test).deliver_now
       redirect_to result_passing_test_path(@passing_test)
     else
@@ -48,7 +48,7 @@ class PassingTestsController < ApplicationController
     current_user.gists.create(question: @passing_test.current_question, url: gist_url)
   end
 
-  def badges_award!
+  def award_badges!
     badge_service = CreateUserBadgesService.new(@passing_test)
     badge_service.badges_award!
     current_user.badges.push(badge_service.badges)

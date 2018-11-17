@@ -39,21 +39,4 @@ class CreateUserBadgesService
     badge_record.save
   end
 
-
-  # def create_badge_params
-  #   #code
-  # end
-  #
-  # def create_badge_cup(name)
-  #   @user.badges.create(name: name, image: 'badge_cup.png', rule: name)
-  # end
-  #
-  # def create_badge_first(name)
-  #   @user.badges.create(name: name, image: 'badge_first.png', rule: name)
-  # end
-  #
-  # def create_badge_ok(name)
-  #   @user.badges.create(name: name, image: 'badge_ok.png', rule: name)
-  # end
-
 end

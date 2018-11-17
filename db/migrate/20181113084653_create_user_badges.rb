@@ -1,7 +1,7 @@
 class CreateUserBadges < ActiveRecord::Migration[5.2]
   def change
     create_table :users_badges do |t|
-      t.references :user, foreign_key: true, index: false
+      t.references :user, foreign_key: true, index: true
       t.references :badge, foreign_key: true, index: false
 
       t.timestamps

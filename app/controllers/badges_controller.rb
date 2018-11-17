@@ -1,11 +1,9 @@
 class BadgesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_badge, only: [:show]
+  before_action :find_badge
 
   def index
-    @badges = current_user.badges.all
-    # @user_badges = current_user.badges
-    # @accessible_badges = Badge.all
+    
   end
 
   private
