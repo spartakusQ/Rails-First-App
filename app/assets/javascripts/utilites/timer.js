@@ -1,46 +1,60 @@
-document.addEventListener('turbolinks:load', function() {
-  var timer = document.querySelector('.timer');
-
-  if (timer) runTimer(timer);
+document.addEventListener('turbolinks:load', () => {
+  const timerElement = document.querySelector('.timer')
+  if (timerElement) {
+    runTimer(timerElement)
+  }
 })
 
-function runTimer(timer) {
-  var seconds = timer.dataset.timeLeft;
+/**
+ * runTimer
+ * @param {HTMLElement} timerElement
+ */
+function runTimer (timerElement) {
+  let seconds = timerElement.dataset.timeLeft
 
-  if (seconds != 'false') {
-    var showTimeLeft = function() {
+  if (seconds !== 'false') {
+    seconds = parseInt(seconds, 10)
+    const repeaterId = setInterval(() => {
       if (seconds === 0) {
-        turnOffTimer(timer, repeater);
-        document.forms[0].submit();
+        turnOffTimer(timerElement, repeaterId)
+        document.forms[0].submit()
       } else {
-        seconds--;
+        seconds--
       }
-      timer.textContent = timeLeftToHhMmSs(seconds);
-    }
-    var repeater = setInterval(showTimeLeft, 1000);
+
+      timerElement.textContent = timeLeftToHhMmSs(seconds)
+    }, 1000)
   } else {
-    timer.classList.add('hide');
+    timerElement.classList.add('hide')
   }
 }
 
 function timeLeftToHhMmSs(seconds) {
-  left_seconds = Number(seconds);
+  left_seconds = parseInt(seconds, 10)
 
-  var hours = Math.floor(seconds / 3600);
-  var minutes = Math.floor(seconds % 3600 / 60);
-  var seconds = Math.floor(seconds % 3600 % 60);
+  var hours = ~~(seconds / 3600)
+  var minutes = ~~(seconds % 3600 / 60)
+  var seconds = ~~(seconds % 3600 % 60)
 
-  return ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
 }
 
-function backRedirect() {
-    location.replace("http://localhost:3000/")
+
+
+/**
+ * turnOffTimer
+ * @param {HTMLElement} timerElement
+ * @param {Object} repeaterId
+ */
+
+function foo (msg) {
+    window.alert("Ваше время на выполнение теста вышло")
+    window.location = 'http://localhost:3000/'
 }
 
-function turnOffTimer(timer, repeater) {
-  timer.classList.remove('timer');
-  alert("Ваше время на выполнение теста вышло");
-  timer.classList.add('ended');
-  timer.classList.remove('unended');
-  clearInterval(repeater);
+function turnOffTimer (timerElement, repeaterId) {
+  clearInterval(repeaterId)
+  timerElement.classList.remove('timer')
+  timerElement.classList.add('ended')
+  timerElement.classList.remove('unended')
 }
