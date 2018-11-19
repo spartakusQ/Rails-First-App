@@ -24,7 +24,7 @@ function runTimer(timer) {
 }
 
 function timeLeftToHhMmSs(seconds) {
-  seconds = Number(seconds);
+  left_seconds = Number(seconds);
 
   var hours = Math.floor(seconds / 3600);
   var minutes = Math.floor(seconds % 3600 / 60);
@@ -33,8 +33,13 @@ function timeLeftToHhMmSs(seconds) {
   return ('0' + hours).slice(-2) + ":" + ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2);
 }
 
+function backRedirect() {
+    location.replace("http://localhost:3000/")
+}
+
 function turnOffTimer(timer, repeater) {
   timer.classList.remove('timer');
+  alert("Ваше время на выполнение теста вышло");
   timer.classList.add('ended');
   timer.classList.remove('unended');
   clearInterval(repeater);

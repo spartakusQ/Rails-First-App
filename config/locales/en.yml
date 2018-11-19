@@ -109,6 +109,7 @@ en:
       header: "Test %{title}"
       success: "successfully complete"
       failed: "failed"
+      time_failed: "Time's out"
       back: "Tests list"
     gist:
       success: "Gist successfully saved. %{url}"
