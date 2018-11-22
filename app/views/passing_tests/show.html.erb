@@ -7,7 +7,8 @@
 
     <div class="row">
       <dt class="col-sm-9">
-        <%= t('.questions', current_question: @passing_test.current_question_number, questions_count: @passing_test.test.questions.count) %>
+        <%= t('.questions', current_question:
+          @passing_test.current_question_number, questions_count: @passing_test.test.questions.count) %>
       </dt>
       <dd class="col-sm-3">
         <%= link_to 'Gist question', gist_passing_test_path(@passing_test), method: :post %>
@@ -21,7 +22,8 @@
 
       <ul class="list-group list-group-flush">
         <%= form_with url: passing_test_path(@passing_test), local: true, method: :put do |form| %>
-          <%= form.collection_check_boxes :answer_ids, @passing_test.current_question.answers, :id, :body, include_hidden: false do |b| %>
+          <%= form.collection_check_boxes :answer_ids,
+          @passing_test.current_question.answers, :id, :body, include_hidden: false do |b| %>
           <li class="list-group-item">
             <%= b.check_box id: "answer_ids_#{b.object.id}" %>
             <%= b.label %>

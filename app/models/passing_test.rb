@@ -32,7 +32,6 @@ class PassingTest < ApplicationRecord
 
   def time_left
     return if test.timer.nil?
-    
     time_left = (test.timer) - (Time.now.to_i - created_at.to_i)
     time_left.positive? ? time_left : 0
   end
@@ -45,8 +44,7 @@ class PassingTest < ApplicationRecord
 
   def correct_answer?(answer_ids)
     correct_answers_count = true_answers.count
-    (correct_answers_count == answer_ids.count) &&
-      correct_answers_count == true_answers.where(id: answer_ids).count
+    (correct_answers_count == answer_ids.count) && correct_answers_count == true_answers.where(id: answer_ids).count
   end
 
   def true_answers
