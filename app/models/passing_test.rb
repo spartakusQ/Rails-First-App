@@ -42,7 +42,9 @@ class PassingTest < ApplicationRecord
     self.current_question = next_question
   end
 
+
   def correct_answer?(answer_ids)
+    return false unless answer_ids
     correct_answers_count = true_answers.count
     (correct_answers_count == answer_ids.count) && correct_answers_count == true_answers.where(id: answer_ids).count
   end
