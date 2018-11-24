@@ -2,6 +2,7 @@ class PassingTestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_passing_test, only: %i[show result update gist]
+  # before_action :check_id_passing_test, only: %i[show result update]
 
   def show
 
@@ -14,7 +15,7 @@ class PassingTestsController < ApplicationController
   def update
     @passing_test.accept!(params[:answer_ids])
     if @passing_test.completed?
-      TestsMailer.completed_test(@passing_test).deliver_now
+      # TestsMailer.completed_test(@passing_test).deliver_now
       redirect_to result_passing_test_path(@passing_test)
     else
       render :show
@@ -46,4 +47,9 @@ class PassingTestsController < ApplicationController
   def make_gist!(gist_url)
     current_user.gists.create(question: @passing_test.current_question, url: gist_url)
   end
+
+  # def check_id_passing_test
+  #
+  #   redirect_to @passing_test.id(id: @passing_test.current_question)
+  # end
 end
