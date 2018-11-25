@@ -1,2 +1,3 @@
 <%= content_tag :span, '', class: 'timer unended text-right',
-                           data: { time_left: passing_test.time_left.nil? ? 'false' : passing_test.time_left } %>
+                              data: { time_left:  @passing_test.remaining_seconds }
+                           %>

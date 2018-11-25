@@ -30,10 +30,16 @@ class PassingTest < ApplicationRecord
     correct_answers_percent >= SUCCESS_POINT
   end
 
-  def time_left
-    return if test.timer.nil?
-    time_left = (test.timer) - (Time.now.to_i - created_at.to_i)
-    time_left.positive? ? time_left : 0
+  def timer_test?
+    test.timer.present?
+  end
+
+  def remaining_seconds
+    ((created_at + test.timer.minutes) - Time.current).to_i
+  end
+
+  def time_out?
+    remaining_seconds <= 0 if timer_test?
   end
 
   private

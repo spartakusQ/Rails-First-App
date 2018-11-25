@@ -2,7 +2,7 @@ class PassingTestsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_passing_test, only: %i[show result update gist]
-  # before_action :check_id_passing_test, only: %i[show result update]
+  before_action :check_time_left, only: :update
 
   def show
 
@@ -48,8 +48,8 @@ class PassingTestsController < ApplicationController
     current_user.gists.create(question: @passing_test.current_question, url: gist_url)
   end
 
-  # def check_id_passing_test
-  #
-  #   redirect_to @passing_test.id(id: @passing_test.current_question)
-  # end
+  def check_time_left
+    return unless @passing_test.time_out?
+    redirect_to result_passing_test_path(@passing_test)
+  end
 end

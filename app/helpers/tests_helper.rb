@@ -10,4 +10,8 @@ module TestsHelper
       else t('difficulty_level.hero')
     end
   end
+
+  def test_timer(test)
+    test.timer ? t('.timer', time: test.timer) : t('.unlimited')
+  end
 end

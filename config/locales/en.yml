@@ -7,6 +7,8 @@ en:
       level:  "Level"
       actions: "Actions"
     test:
+      timer: "%{time} min"
+      unlimited: "Unlimited"
       start: "Start"
 
   admin:
@@ -45,6 +47,8 @@ en:
         header: "Edit %{title} test"
         back: "Back"
       test:
+        timer: "%{time} min"
+        unlimited: "Unlimited"
         show: "Show"
         edit: "Edit"
         delete: "Delete"
