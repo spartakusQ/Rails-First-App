@@ -30,9 +30,7 @@ class PassingTest < ApplicationRecord
     correct_answers_percent >= SUCCESS_POINT
   end
 
-  def timer_test?
-    test.timer.present?
-  end
+
 
   def remaining_seconds
     ((created_at + test.timer.minutes) - Time.current).to_i
@@ -43,6 +41,10 @@ class PassingTest < ApplicationRecord
   end
 
   private
+
+  def timer_test?
+    test.timer.present?
+  end
 
   def before_validation_set_current_question
     self.current_question = next_question

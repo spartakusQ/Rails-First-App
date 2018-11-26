@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_25_101426) do
+ActiveRecord::Schema.define(version: 2018_11_26_194706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_101426) do
     t.integer "current_question_id"
     t.integer "correct_answers", default: 0
     t.bigint "time_left"
-    t.bigint "test_end_time"
     t.index ["test_id"], name: "index_passing_tests_on_test_id"
     t.index ["user_id"], name: "index_passing_tests_on_user_id"
   end
@@ -77,7 +76,6 @@ ActiveRecord::Schema.define(version: 2018_11_25_101426) do
     t.bigint "category_id"
     t.integer "author_id"
     t.bigint "timer"
-    t.bigint "test_time_left"
     t.index ["category_id"], name: "index_tests_on_category_id"
     t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
   end
