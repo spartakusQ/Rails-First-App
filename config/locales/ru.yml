@@ -7,6 +7,8 @@ ru:
       questions: "Вопросов"
       actions: "Действия"
     test:
+      timer: "%{time} мин"
+      unlimited: "Неограниченно"
       start: "Пройти"
 
   admin:
@@ -45,6 +47,8 @@ ru:
         header: "Редактировать %{title} тест"
         back: "Назад"
       test:
+        timer: "%{time} мин"
+        unlimited: "Неограниченно"
         show: "Посмотреть"
         edit: "Редактировать"
         delete: "Удалить"

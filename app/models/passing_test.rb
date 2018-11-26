@@ -30,16 +30,31 @@ class PassingTest < ApplicationRecord
     correct_answers_percent >= SUCCESS_POINT
   end
 
+
+
+  def remaining_seconds
+    ((created_at + test.timer.minutes) - Time.current).to_i
+  end
+
+  def time_out?
+    remaining_seconds <= 0 if timer_test?
+  end
+
   private
+
+  def timer_test?
+    test.timer.present?
+  end
 
   def before_validation_set_current_question
     self.current_question = next_question
   end
 
+
   def correct_answer?(answer_ids)
+    return false unless answer_ids
     correct_answers_count = true_answers.count
-    (correct_answers_count == answer_ids.count) &&
-      correct_answers_count == true_answers.where(id: answer_ids).count
+    (correct_answers_count == answer_ids.count) && correct_answers_count == true_answers.where(id: answer_ids).count
   end
 
   def true_answers

@@ -7,5 +7,8 @@
 
     <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true, class: "form-control" %>
 
+    <%= form.label :timer %><br>
+    <%= form.text_field :timer, id: :timer %>
+
     <%= form.submit class: "btn btn-primary" %>
 <% end %>
