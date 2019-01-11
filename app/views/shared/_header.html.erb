@@ -7,8 +7,9 @@
     <ul class="navbar-nav">
 
   <% if current_user && current_user.admin? %>
-      <li class="nav-item active">        
-        <%= link_to t('admin.header.header'), admin_tests_path, class: 'navbar-link' %>
+      <li class="nav-item active">
+        <%= link_to t('admin.header.header'), admin_tests_path %>
+        <%= link_to t('.badges'), badges_path %>
       </li>
   <% end %>
 
@@ -16,6 +17,11 @@
   </div>
   <span class="navbar-text">
     <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to 'Badge', admin_badges_path, class: 'btn btn-outline-info'  %>
+      <% else %>
+        <%= link_to 'Badge', badges_path, class: 'btn btn-outline-info'  %>
+      <% end %>
       <%= t('.hello')%>,
       <b><%= current_user.email %></b>
       Guru |

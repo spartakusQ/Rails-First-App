@@ -15,7 +15,7 @@ class PassingTestsController < ApplicationController
   def update
     @passing_test.accept!(params[:answer_ids])
     if @passing_test.completed?
-      # TestsMailer.completed_test(@passing_test).deliver_now
+      TestsMailer.completed_test(@passing_test).deliver_now
       redirect_to result_passing_test_path(@passing_test)
     else
       render :show
@@ -46,10 +46,5 @@ class PassingTestsController < ApplicationController
 
   def make_gist!(gist_url)
     current_user.gists.create(question: @passing_test.current_question, url: gist_url)
-  end
-
-  def check_time_left
-    return unless @passing_test.time_out?
-    redirect_to result_passing_test_path(@passing_test)
   end
 end
